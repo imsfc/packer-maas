@@ -67,9 +67,12 @@ endif
 extra_drivers:
 	mkisofs -o drivers.iso -V 'Extra Drivers' -input-charset utf-8 -r -J drivers
 
-.INTERMEDIATE: extra_drivers http/Autounattend.xml
+beta_network:
+	mkisofs -o betanetwork.iso -V 'Beta Network' -input-charset utf-8 -r -J betanetwork
 
-windows: check-deps clean extra_drivers http/Autounattend.xml OVMF_VARS.fd
+.INTERMEDIATE: extra_drivers beta_network http/Autounattend.xml
+
+windows: check-deps clean extra_drivers beta_network http/Autounattend.xml OVMF_VARS.fd
 ifeq ($(strip $(VERSION)),11)
 	mkdir -p /tmp/swtpm; \
 	swtpm socket --daemon --tpm2 --tpmstate dir=/tmp/swtpm --ctrl type=unixio,path=/tmp/swtpm/swtpm-sock --log level=10
@@ -107,4 +110,4 @@ endif
 
 clean:
 	${RM} -rf output-* windows.dd.gz http/Autounattend.xml \
-	drivers.iso windows_builder.img OVMF_VARS.fd
+	drivers.iso betanetwork.iso windows_builder.img OVMF_VARS.fd

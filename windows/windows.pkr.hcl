@@ -61,6 +61,7 @@ locals {
     ["-drive", "file=output-windows_builder/packer-windows_builder,format=raw"],
     ["-cdrom", "${var.iso_path}"],
     ["-drive", "file=drivers.iso,media=cdrom,index=3"],
+    ["-drive", "file=betanetwork.iso,media=cdrom,index=4"],
     ["-boot", "d"],
     ["-device", "nec-usb-xhci"],
     ["-device", "usb-tablet"]
