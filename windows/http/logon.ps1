@@ -113,14 +113,14 @@ try
         # Write success, this is used to check that this process made it this far
         New-Item -Path c:\success.tch -Type file -Force
 
-        $Host.UI.RawUI.WindowTitle = "Running Sysprep..."
-        if ($DoGeneralize) {
-            $unattendedXmlPath = "$ENV:ProgramFiles\Cloudbase Solutions\Cloudbase-Init\conf\Unattend.xml"
-            & "$ENV:SystemRoot\System32\Sysprep\Sysprep.exe" `/generalize `/oobe `/shutdown `/unattend:"$unattendedXmlPath"
-        } else {
-            $unattendedXmlPath = "$ENV:ProgramFiles\Cloudbase Solutions\Cloudbase-Init\conf\Unattend.xml"
-            & "$ENV:SystemRoot\System32\Sysprep\Sysprep.exe" `/oobe `/shutdown `/unattend:"$unattendedXmlPath"
-        }
+        # $Host.UI.RawUI.WindowTitle = "Running Sysprep..."
+        # if ($DoGeneralize) {
+        #     $unattendedXmlPath = "$ENV:ProgramFiles\Cloudbase Solutions\Cloudbase-Init\conf\Unattend.xml"
+        #     & "$ENV:SystemRoot\System32\Sysprep\Sysprep.exe" `/generalize `/oobe `/shutdown `/unattend:"$unattendedXmlPath"
+        # } else {
+        #     $unattendedXmlPath = "$ENV:ProgramFiles\Cloudbase Solutions\Cloudbase-Init\conf\Unattend.xml"
+        #     & "$ENV:SystemRoot\System32\Sysprep\Sysprep.exe" `/oobe `/shutdown `/unattend:"$unattendedXmlPath"
+        # }
 }
 catch
 {
